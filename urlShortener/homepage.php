@@ -19,8 +19,7 @@ include("header.php");
             <input id="urlDisplay" class="form-control" type="text" value="Shortened URL will appear here" aria-label="Disabled input example" disabled readonly>
             <button id="copyBtn" type="button" class="btn btn-dark">C</button>
         </div>
-        <div id="lds-ring" class="d-flex justify-content-center align-items-center"><div></div><div></div><div></div>
-
+       
     </div>
     <div id="snackbar">Copied</div>
 </form>
@@ -30,11 +29,9 @@ include("header.php");
     var copyBtn = document.getElementById("copyBtn");
     var urlTextBox = document.getElementById("URLinput");
     var urlDisplayBox = document.getElementById("urlDisplay");
-    var loader = document.getElementById("lds-ring");
 
     btn.onclick = () => {
 
-        loader.className = "show";
         const callUrlShortener = async () => {
 
             if (!valid(urlTextBox.value)) {
@@ -61,7 +58,6 @@ include("header.php");
         }
 
         callUrlShortener().then(data => {
-            loader.className = loader.className.replace("show", ""); 
             urlDisplayBox.value = data.id;
         });
     }
